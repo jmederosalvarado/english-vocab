@@ -44,7 +44,7 @@ export default function Home() {
   }
 
   return (
-    <>
+    <div className="pb-10">
       <h1 className="text-2xl text-gray-700 font-extrabold tracking-wide text-center mt-4">
         English Vocabulary
       </h1>
@@ -60,6 +60,6 @@ export default function Home() {
           loading
         </div>
       )}
-    </>
+    </div>
   );
 }
