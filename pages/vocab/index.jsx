@@ -33,7 +33,6 @@ export async function getStaticProps() {
   for (let i = 0; i < wtake.length; i++) {
     wtake[i] = words[(start + i) % words.length];
   }
-  console.log(wtake);
 
   return {
     props: {
@@ -43,6 +42,7 @@ export async function getStaticProps() {
         month: date.getUTCMonth(),
         day: date.getUTCDate(),
       },
+      start,
     },
     revalidate: 30,
   };
