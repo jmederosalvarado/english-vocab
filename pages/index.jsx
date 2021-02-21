@@ -1,65 +1,66 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useState } from "react";
+import SearchIconSM from "../icons/heroicons/small/search";
+import WordResult from "../components/word-result";
+import axios from "axios";
+
+function SearchBox({ onSearch }) {
+  const [query, setQuery] = useState("");
+
+  return (
+    <div className="border flex items-center justify-around rounded-full px-2 py-1">
+      <button className="focus:outline-none" onClick={() => onSearch(query)}>
+        <SearchIconSM className="w-5 h-5 text-gray-600 flex-shrink-0" />
+      </button>
+      <input
+        placeholder=""
+        className="flex-grow focus:outline-none min-w-0 bg-transparent text-gray-600 placeholder-current font-medium px-2"
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            onSearch(query);
+          }
+        }}
+        onChange={(e) => {
+          setQuery(e.target.value);
+        }}
+      />
+    </div>
+  );
+}
 
 export default function Home() {
+  const [busy, setBusy] = useState(false);
+  const [result, setResult] = useState(undefined);
+
+  async function handleSearch(query) {
+    setResult(undefined);
+    setBusy(true);
+    const result = (
+      await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en_US/${query}`
+      )
+    ).data;
+    console.log(result);
+    setResult(result);
+    setBusy(false);
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+      <h1 className="text-2xl text-gray-700 font-extrabold tracking-wide text-center mt-4">
+        English Vocabulary
+      </h1>
+      <div className="w-48 mx-auto mt-10">
+        <SearchBox onSearch={handleSearch} />
+      </div>
+      {result &&
+        result.map((wordResult, i) => (
+          <WordResult wordResult={wordResult} key={i} />
+        ))}
+      {busy && (
+        <div className="text-gray-500 text-sm font-bold uppercase tracking-wide text-center mt-2 animate-pulse">
+          loading
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+      )}
+    </>
+  );
 }
