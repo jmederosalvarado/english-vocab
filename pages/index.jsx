@@ -39,7 +39,6 @@ export default function Home() {
         `https://api.dictionaryapi.dev/api/v2/entries/en_US/${query}`
       )
     ).data;
-    console.log(result);
     setResult(result);
     setBusy(false);
   }
