@@ -1,12 +1,12 @@
 export default function Meaning({ meaning }) {
   return (
-    <div className="">
+    <div className="max-w-sm w-full">
       <div className="text-xs font-bold text-gray-700 text-right">
         {meaning.partOfSpeech}
       </div>
       <div className="text-sm leading-tight">
         {meaning.definitions.map((d, i) => (
-          <div key={i}>
+          <div className="" key={i}>
             <div className="text-gray-900 font-semibold mt-1">
               {d.definition}
             </div>
