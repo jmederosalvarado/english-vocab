@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PlayIconSM from "../icons/heroicons/small/play";
 
-export default function Phonetic({ phonetic }) {
+export default function Phonetic({ phonetic, className }) {
   const [canPlay, setCanPlay] = useState(false);
 
   const audio = new Audio(phonetic.audio);
@@ -10,7 +10,7 @@ export default function Phonetic({ phonetic }) {
 
   return (
     <button
-      className="focus:outline-none inline-flex items-center bg-gray-500 px-2 py-1 rounded-full"
+      className={`focus:outline-none inline-flex items-center bg-gray-500 px-2 py-1 rounded-full ${className}`}
       onClick={() => {
         if (canPlay) {
           setCanPlay(false);

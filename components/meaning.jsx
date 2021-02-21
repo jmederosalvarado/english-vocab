@@ -1,6 +1,6 @@
-export default function Meaning({ meaning }) {
+export default function Meaning({ meaning, className }) {
   return (
-    <div className="max-w-sm w-full">
+    <div className={`max-w-sm w-full ${className}`}>
       <div className="text-xs font-bold text-gray-700 text-right">
         {meaning.partOfSpeech}
       </div>
