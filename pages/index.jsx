@@ -56,7 +56,7 @@ export default function Home() {
           <WordResult wordResult={wordResult} key={i} />
         ))}
       {busy && (
-        <div className="text-gray-500 text-sm font-bold uppercase tracking-wide text-center mt-2 animate-pulse">
+        <div className="text-gray-500 text-sm font-bold uppercase tracking-wide text-center mt-5 animate-pulse">
           loading
         </div>
       )}
