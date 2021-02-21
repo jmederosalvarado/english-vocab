@@ -6,7 +6,7 @@ export default function Meaning({ meaning, className }) {
       </div>
       <div className="text-sm leading-tight">
         {meaning.definitions.map((d, i) => (
-          <div className="" key={i}>
+          <div className="mt-3" key={i}>
             <div className="text-gray-900 font-semibold mt-1">
               {d.definition}
             </div>
