@@ -11,7 +11,7 @@ export default function Meaning({ meaning }) {
               {d.definition}
             </div>
             <div className="text-gray-500 font-semibold mt-1">
-              "{d.example}"
+              {d.example && `"${d.example}"`}
             </div>
             {d.synonyms && (
               <div className="text-gray-700 text-xs font-semibold mt-1">
