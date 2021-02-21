@@ -2,7 +2,7 @@ import RandomGenerator from "random-seed";
 import { promises as fs } from "fs";
 import path from "path";
 
-export default function Vocab({ words, date }) {
+export default function Vocab({ words, date, start }) {
   return (
     <div className="pb-10">
       <h1 className="text-2xl text-gray-700 font-extrabold tracking-wide text-center mt-4">
@@ -11,6 +11,8 @@ export default function Vocab({ words, date }) {
       {JSON.stringify(date)}
       <div className="h-24"></div>
       {JSON.stringify(words)}
+      <div className="h-24"></div>
+      {start}
     </div>
   );
 }
