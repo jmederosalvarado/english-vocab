@@ -6,6 +6,7 @@ export default function Phonetic({ phonetic }) {
 
   const audio = new Audio(phonetic.audio);
   audio.oncanplaythrough = () => setCanPlay(true);
+  audio.load();
 
   return (
     <button
