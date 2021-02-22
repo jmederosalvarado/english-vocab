@@ -12,7 +12,7 @@ export default function Vocab({ words }) {
       <div className="flex flex-col items-center mt-5">
         {words.map((w, i) => (
           <Link href={`/vocab/${w}`} key={i}>
-            <a className="text-gray-600 font-bold focus:text-blue-700 hover:text-blue-500 w-40 mt-5 text-center flex justify-center items-center uppercase tracking-wide text-sm">
+            <a className="text-gray-600 font-bold focus:text-indigo-500 hover:text-indigo-300 w-40 mt-5 text-center flex justify-center items-center uppercase tracking-wide text-sm">
               {w}
               <ChevronRightIconSM className="w-4 h-4 ml-1" />
             </a>
