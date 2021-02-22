@@ -51,12 +51,11 @@ export default function Home() {
       <h1 className="text-2xl text-gray-700 font-extrabold tracking-wide text-center mt-4">
         English Vocabulary
       </h1>
-      <div className="w-48 mx-auto mt-10 flex justify-center items-center">
-        <SearchBox onSearch={handleSearch} />
+      <div className="mx-auto mt-10 flex justify-center items-center">
+        <div className="w-48">
+          <SearchBox onSearch={handleSearch} />
+        </div>
         <Link href="/vocab">
-          {/* <a className="p-1 border rounded-lg ml-3">
-            <BookOpenIconSM className="h-5 w-5 flex-shrink-0 text-gray-500 hover:text-indigo-300 focus:text-indigo-500" />
-          </a> */}
           <a className="p-1 rounded-lg ml-3 bg-gray-600 hover:bg-indigo-500 focus:bg-indigo-700">
             <BookOpenIconSM className="h-5 w-5 flex-shrink-0 text-white" />
           </a>
